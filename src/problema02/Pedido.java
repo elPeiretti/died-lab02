@@ -3,7 +3,7 @@ package problema02;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-public abstract class Pedido {
+public abstract class Pedido implements Comisionable{
 	protected ArrayList<Producto> Productos;
 	protected Integer cantProductos;
 	protected Integer cantMax;
@@ -11,10 +11,14 @@ public abstract class Pedido {
 	protected LocalDate fechaEntrega;
 	
 	public abstract Double precio();
-	public abstract Double comision();
+	
 	
 	public boolean isConcretado() {
 		return concretado;
+	}
+	
+	public LocalDate getFechaEntrega() {
+		return this.fechaEntrega;
 	}
 	
 	public boolean agregarProducto(Producto p) {

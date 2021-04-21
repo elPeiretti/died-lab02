@@ -6,10 +6,10 @@ public class Cadete {
 	
 	private String nombre;
 	private Integer dni;
-	ArrayList<Pedido> pedidos;
+	ArrayList<Comisionable> pedidos;
 	
 	public Cadete() {
-		this.pedidos = new ArrayList<Pedido>();
+		this.pedidos = new ArrayList<Comisionable>();
 	}
 	
 	public String getNombre() {
@@ -29,11 +29,15 @@ public class Cadete {
 		this.pedidos.add(p);
 	}
 	
+	public void agregarTramite(Tramite t) {
+		this.pedidos.add(t);
+	}
+	
 	public Double comisiones() {
 		Double total=0d;
-		for(Pedido p: pedidos) {
-			if(!p.isConcretado()) {
-				total+=p.comision();
+		for(Comisionable x: this.pedidos) {
+			if(x.getFechaEntrega() != null) {
+				total+=x.comision();
 			}
 		}
 		return total;

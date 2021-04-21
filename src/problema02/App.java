@@ -1,5 +1,7 @@
 package problema02;
 
+import java.time.LocalDate;
+
 public class App {
 
 	public static void main(String args[]) {
@@ -21,5 +23,12 @@ public class App {
 		System.out.println(c1.comisiones());
 		c1.agregarPedido(p2);
 		System.out.println(c1.comisiones());
+		
+		Tramite t1 = new Tramite();
+		t1.setPrecio(10d);
+		t1.setFechaEntrega(LocalDate.now());
+		c1.agregarTramite(t1);
+		System.out.println(c1.comisiones()); //solo cuenta el tramite, el resto tiene la fecha en null :)
+		
 	}
 }
